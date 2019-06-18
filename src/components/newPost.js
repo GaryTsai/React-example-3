@@ -8,22 +8,24 @@ class NewPost extends Component {
         this.uploadClick = this.uploadClick.bind(this);
         this.handleImage = this.handleImage.bind(this);
         this.handleNewPost = this.handleNewPost.bind(this);
-
+        //Store Image URL
         this.state={
             imageURL:''
         }
     }
+    //Pass through the methods click the upload file button
     uploadClick (){
         this.upload.click();
     }
+    //Get the file data and through URL object create URL
     handleImage(e){
         const file = e.target.files[0];
-        console.log(file);
         const imageURL = URL.createObjectURL(file);
         this.setState({
             imageURL:imageURL,
         })
     }
+    //Click submit button will pass the input data to router and store data in component
     handleNewPost(){
         const postData = {
             title:this.title.value,
@@ -79,13 +81,12 @@ class NewPost extends Component {
                             < img src={this.state.imageURL} alt="preview" style={imgStyle}/>
                         </div>
                     }
-                    <input type="file" accept="image/*" value='' ref={(input) => { this.upload = input; }} onChange={event => this.handleImage(event)} hidden/>
+                    <input type="file" accept="image/*" value='' ref={(input) => { this.upload = input }} onChange={event => this.handleImage(event)} hidden/>
                     <button style={btnStyle} onClick={this.uploadClick} >upload</button>
                     {/*(1) Link*/}
                     {/*<Link to={'/router'} ><button style={btnStyle} onClick={this.handleNewPost} >submit</button></Link>*/}
                     {/*(2) this.props.history.push*/}
                     <button style={btnStyle} onClick={this.handleNewPost} >submit</button>
-
                 </div>
             </div>
         );

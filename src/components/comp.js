@@ -16,6 +16,7 @@ class Comp extends Component {
             <div style={componentStyle}>
                 <div>{this.props.component.title}</div>
                 <div>{this.props.component.content}</div>
+                {/*If imageURL is empty, not display the Image*/}
                 {    this.props.component.imageURL &&
                     <img src={this.props.component.imageURL} alt="preview" style={imgStyle}/>
                 }

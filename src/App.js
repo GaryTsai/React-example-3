@@ -8,11 +8,12 @@ export default class App extends Component {
         super(props);
         this.addComponent= this.addComponent.bind(this);
         this.removeComponent= this.removeComponent.bind(this);
-
+        // initial data
         this.state={
             components:[],
         }
     }
+    //Add the component to the  components and rerender the Comp component
     addComponent(postData){
         const components = this.state.components;
         components.push(postData);
@@ -20,6 +21,7 @@ export default class App extends Component {
             components:components
         });
     }
+    //Remove the component from components and rerender the Comp component
     removeComponent(){
         if (!this.state.components.length)
             return;
@@ -37,20 +39,22 @@ export default class App extends Component {
             <div style={center}>
                 <Router>
                 <div>
-                  {/*路徑指定/代表根目錄，所以預設就會渲染Home組件，
-                    而後方有/about的話會渲染About，加入exact可以避免兩個都被render*/}
+                    {/*The Switch avoid that Routes have same alias pathname in the same router  */}
                     <Switch>
-                         <Route exact path="/router"
+                         {/*Button page*/}
+                         <Route  exact path="/router"
                                 render={props =>
                                     <Button {...props}
                                             components = {this.state.components}
                                             removeComponent={this.removeComponent} />}
                          />
-                         <Route path="/router/new-post"
+                        {/*NewPost page*/}
+                        <Route path="/router/new-post"
                                 render={props =>
                                     <NewPost {...props}
                                              addComponent = {this.addComponent}/>}
                          />
+                         {/*Redirect '/' to '/router'*/}
                          <Redirect
                              from='/'
                              to='/router'

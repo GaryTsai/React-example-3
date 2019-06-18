@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import Comp from "./comp";
 
 class Button extends Component {
-    // (2)
+    // (2)Use onClick methods to redirect address to  '/router/new-post'
     // constructor(props){
     //     super(props);
     //      this.btnRedirect = this.btnRedirect.bind(this);
@@ -19,7 +19,7 @@ class Button extends Component {
         return (
 
             <div >
-                {/*(1)*/}
+                {/*(1) Use Link methods to redirect to '/router/new-post'*/}
                 {/*<Link to={`${this.props.match.url}/new-post`}><button style={buttonStyle}   >Add Post</button></Link>*/}
                 {/*(2)*/}
                 {/*<button style={buttonStyle} onClick={this.btnRedirect}>Add Post</button>*/}
@@ -28,6 +28,7 @@ class Button extends Component {
 
                 <button style={buttonStyle} onClick={this.props.removeComponent}>Remove Post</button>
                 <br/>
+                {/*Display the Comp component*/}
                 {this.props.components.map((component,index)=>
                     <Comp component = {component} key={index} />
                 )}
