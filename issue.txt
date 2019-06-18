@@ -1,0 +1,7 @@
+1. 傳遞function 至另Router 所指定的 Component
+ render={props => <Life sayHello = {this.sayHello} />
+
+2.路由轉址
+	Link
+	NavLink (Link的功能延長)
+	this.prop.history.push('/router/new-post')
